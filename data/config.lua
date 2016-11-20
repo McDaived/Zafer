@@ -53,7 +53,7 @@ do local _ = {
     "azan",
     "run",
     "info",
-    "iq_abs",
+    "replay",
     "remsg",
     "run1",
     "redis",

@@ -1,19 +1,19 @@
-local function run(msg, matches)
-  if matches[1] == "getfile" then
-    local file = matches[2]
-    if is_sudo(msg) then --sudo only !
-      local receiver = get_receiver(msg)
-      send_document(receiver, "./plugins/"..file..".lua", ok_cb, false)
-      else 
-        return nil
-    end
-  end
-end
+do 
 
-return {
-  patterns = {
-  "^(getfile) (.*)$"
-  },
-  run = run
-}
+local function run(msg, matches) 
+  if matches[1] == "getfile" then 
+    local file = matches[2] 
+    if is_sudo(msg) then 
+      local receiver = get_receiver(msg) 
+      send_document(receiver, "./plugins/"..file..".lua", ok_cb, false) 
+    end 
+  end 
+end 
+
+return { 
+  patterns = { 
+  "^[!/](getfile) (.*)$" 
+  }, 
+  run = run 
+} 
 end 

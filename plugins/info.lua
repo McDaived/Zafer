@@ -87,8 +87,8 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
   local user = redis:hgetall(uhash)
   local um_hash = 'msgs:'..result.id..':'..extra.chat2
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
-  text = text..' عدد الرسائل المرسله : '..user_info_msgs..'\n\n''
-  text = text..' مـطـور البوت\n >>>>> @mc_dev1''
+  text = text..' عدد الرسائل المرسله : '..user_info_msgs..'\n\n'
+  text = text..' مـطـور البوت\n >>>>> @mc_dev1'
   send_msg(extra.receiver, text, ok_cb,  true)
   else
   send_msg(extra.receiver, 'id not found.\nuse : /info @username', ok_cb, false)
@@ -115,7 +115,7 @@ local function action_by_reply(extra, success, result)-- (reply) /info  function
       elseif is_momod(result.id, extra.chat2) then
        text = text..' الرتبه : ادمن \n\n'
       else
-       text = text..' الرتبه : عضو عادي \n\n'n'
+       text = text..' الرتبه : عضو عادي \n\n'
       end
    else
     text = text..' رتبتك : '..value..'\n\n'
@@ -125,8 +125,8 @@ local function action_by_reply(extra, success, result)-- (reply) /info  function
   local user = redis:hgetall(uhash)
   local um_hash = 'msgs:'..result.from.id..':'..result.to.id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
-  text = text..' عدد الرسائل المرسله : '..user_info_msgs..'\n\n''
-  text = text..' مـطـور البوت\n >>>>> @mc_dev1''
+  text = text..' عدد الرسائل المرسله : '..user_info_msgs..'\n\n'
+  text = text..' مـطـور البوت\n >>>>> @mc_dev1'
   send_msg(extra.receiver, text, ok_cb, true)
 end
 local function action_by_reply2(extra, success, result)
@@ -182,18 +182,18 @@ local function run(msg, matches)
        elseif is_momod(result.id, extra.chat2) then
         text = text..' الرتبه : ادمن \n\n'
        else
-        text = text..' الرتبه : عضو عادي \n\n'n'
+        text = text..' الرتبه : عضو عادي \n\n'
        end
    else
-     text = text..' رتبتك : '..value..'\n\n''
+     text = text..' رتبتك : '..value..'\n\n'
       end
     end
      local uhash = 'user:'..msg.from.id
       local user = redis:hgetall(uhash)
        local um_hash = 'msgs:'..msg.from.id..':'..msg.to.id
      user_info_msgs = tonumber(redis:get(um_hash) or 0)
-     text = text..' عدد الرسائل المرسله : '..user_info_msgs..'\n\n''
-     text = text..' مـطـور البوت\n >>>>> @mc_dev1''
+     text = text..' عدد الرسائل المرسله : '..user_info_msgs..'\n\n'
+     text = text..' مـطـور البوت\n >>>>> @mc_dev1'
     if msg.to.type == 'chat' then
      text = text..' اسم المجموعه : '..msg.to.title..'\n'
      text = text..' ايدي المجموعه : '..msg.to.id

@@ -78,7 +78,7 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
       elseif is_momod(result.id, extra.chat2) then
        text = text..' الرتبه : ادمن \n\n'
       else
-       text = text..' الرتبه : عضو عادي \n\n'n'
+       text = text..' الرتبه : عضو عادي \n\n'
       end
    else
     text = text..' رتبتك : '..value..'\n\n'

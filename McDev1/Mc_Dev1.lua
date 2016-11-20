@@ -265,7 +265,7 @@ function create_config( )
     "azan",
     "run",
     "info",
-    "iq_abs",
+    "replay",
     "remsg",
     "run1",
     "redis"

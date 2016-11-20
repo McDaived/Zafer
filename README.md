@@ -6,89 +6,69 @@
 
 # Features
 
-* **A powerful antispam system with custom sensitivity for each group**
-* **Multiple realms (admin groups)**
-* **Recalcitrant to any kind of spamming (X/Y bots, name/photo changers, etc.)**
-* **Global banning**
-* **Broadcast to all groups**
-* **Group and  links**
-* **Kick, ban and unban by reply**
-* **Groups, ban and global ban list**
-* **Logging anything that happens in a group**
-* **Invitation by username**
-* **Group administration via private messages**
-* **Only mods, owner and admin can add bots in groups**
-* **Arabic lock**
-* **Chat list**
-* **And more!**
-
+* **💠افضل برنامج يوفر الحمايه المطلقه**
+* **💠يقوم بمنع كل من الرسائل السبام و الصور الغير لائقه و اعادات التوجيه المزعجه و غير ذلك**
+* **💠يوفر سهوله استخدام**
+* **💠سرعه الرد**
+* **💠سرعه تطبيق الاوامر**
 
 * * *
-## General Commands {#general_commands}
-| Command | Description |
+## {اوامر رسائل خاصه {#اوامر خاصه
+| الامر | الوصف |
 |:--------|:------------|
-| [#!/]id | Returns group/SuperGroup ID or user id in pm. |
-| [#!/]teleseed | Returns bot information. |
+| 🌀[#!/]help | نص المساعده |
+| 🌀[#!/]chatlist | يقوم بوضع ملف LOGS المحادثات |
+| 🌀[#!/]join [GroupID] | لاضافه البوت الى المجموعات |
 
 
-## Private Message Commands {#privmsg_commands}
-| Command | Description |
-|:--------|:------------|
-| [#!/]help | Returns help text. |
-| [#!/]superhelp | Returns SuperGroup help text. |
-| [#!/]chats | Returns public chats in a message(s). |
-| [#!/]chatlist | Returns public chats in a .txt document. |
-| [#!/]join [GroupID] | Join a public chat by id |
+## {أوامر المشرف {#اوامر مشرف
 
-
-## Moderator commands {#moderator_commands}
-
-| Command | Description | Groups? | SuperGroups? |
+| اوامر | الوصف | المجموعه | المجموعه سوبر |
 |:--------|:------------|:--------|:-------------|
-| [#!/]info | Returns general info about the SuperGroup. | N | Y |
-| [#!/]admins | Returns SuperGroup admins list. | N | Y |
-| [#!/]modlist | Returns Moderator list. | Y | Y |
-| [#!/]owner | Returns group/SuperGroup owner. _Can be used by any user_| Y | Y |
-| [#!/]bots | Lists bots in SuperGroup. | N | Y |
-| [#!/]who | Lists all users in group *SuperGroup returns .txt document list. | Y | Y |
-| [#!/]wholist | Lists all users in group in .txt document. | Y | N |
-| [#!/]block | Kicks a user from SuperGroup **Adds user to blocked list**. | N | Y |
-| [#!/]kick | kicks user from group. | Y | N |
-| [#!/]ban | Bans user from the group/SuperGroup. | Y | Y |
-| [#!/]unban | Unbans user from group/SuperGroup. | Y | Y |
+| [#!/]info | لاضهار معلومات العضو و المجموعه | ❌ | ⭕️ |
+| [#!/]admins | Returns SuperGroup admins list. | ❌ | ⭕️ |
+| [#!/]modlist | Returns Moderator list. | ⭕️ | ⭕️ |
+| [#!/]owner | Returns group/SuperGroup owner. _Can be used by any user_| ⭕️ | ⭕️ |
+| [#!/]bots | Lists bots in SuperGroup. | ❌ | ⭕️ |
+| [#!/]who | Lists all users in group *SuperGroup returns .txt document list. | ⭕️ | ⭕️ |
+| [#!/]wholist | Lists all users in group in .txt document. | ⭕️ | ❌ |
+| [#!/]block | Kicks a user from SuperGroup **Adds user to blocked list**. | ❌ | ⭕️ |
+| [#!/]kick | kicks user from group. | ⭕️ | ❌ |
+| [#!/]ban | Bans user from the group/SuperGroup. | ⭕️ | ⭕️ |
+| [#!/]unban | Unbans user from group/SuperGroup. | ⭕️ | ⭕️ |
 | [#!/]id [username<html>&#124;</html>reply] | For userID's: !id @username (**ONLY IN SuperSroups**) or reply `!id` in any group. | Y | Y |
-| [#!/]id from | Returns ID of user a message is forwarded from. | N | Y |
-| [#!/]kickme | Kicks user from SuperGroup / In SuperGroup: **Must be unblocked by owner or use `#join` by pm to return** | Y | Y |
-| [#!/]setowner | Sets group/SuperGroup owner. | Y | Y |
-| [#!/]promote | Promote a group/SuperGroup moderator. | Y | Y |
-| [#!/]demote | Demote a group/SuperGroup moderator. | Y | Y |
-| [#!/]setname | Set group/SuperGroup name. | Y | Y |
-| [#!/]setphoto | Set group/SuperGroup photo. | Y | Y |
-| [#!/]setrules | Set group/SuperGroup rules. | Y | Y |
-| [#!/]setabout |  Sets the about section in chat info(members list) | N | Y |
-| [#!/]set about |  | Y | N |
-| [#!/]save [value] <text> | Sets extra info for group/SuperGroup by value. | Y | Y |
-| [#!/]get [value] | Returns extra info for group/SuperGroup by value. | Y | Y |
-| [#!/]newlink | Generate a new group/SuperGroup link. | Y | Y |
-| [#!/]setlink | Set a new SuperGroup link _If bot is not creator_. | N | Y |
-| [#!/]link | Retrieves the group/SuperGroup link. | Y | Y |
-| [#!/]rules | Retrieves the group/SuperGroup rules. | Y | Y |
-| [#!/]lock [setting](#settings) | Lock group/SuperGroup settings. | Y | Y |
-| [#!/]unlock [setting](#settings) | Unlock group/SuperGroup. | Y | Y |
-| [#!/]mute [mute](#mutes) | mute group message types. | Y | Y |
-| [#!/]unmute [mute](#mutes) | unmute group message types. | Y | Y |
-| [#!/]setflood [value](#settings) | Set [value] as flood sensitivity.| Y | Y |
+| [#!/]id from | Returns ID of user a message is forwarded from. | ❌ | ⭕️ |
+| [#!/]kickme | Kicks user from SuperGroup / In SuperGroup: **Must be unblocked by owner or use `#join` by pm to return** | ⭕️ | Y |
+| [#!/]setowner | Sets group/SuperGroup owner. | ⭕️ | ⭕️ |
+| [#!/]promote | Promote a group/SuperGroup moderator. | ⭕️ | ⭕️ |
+| [#!/]demote | Demote a group/SuperGroup moderator. | ⭕️ | ⭕️ |
+| [#!/]setname | Set group/SuperGroup name. | ⭕️ | ⭕️ |
+| [#!/]setphoto | Set group/SuperGroup photo. | ⭕️ | ⭕️ |
+| [#!/]setrules | Set group/SuperGroup rules. | ⭕️ | ⭕️ |
+| [#!/]setabout |  Sets the about section in chat info(members list) | ❌ | ⭕️ |
+| [#!/]set about |  | ⭕️ | ❌ |
+| [#!/]save [value] <text> | Sets extra info for group/SuperGroup by value. | ⭕️ | ⭕️ |
+| [#!/]get [value] | Returns extra info for group/SuperGroup by value. | ⭕️ | ⭕️ |
+| [#!/]newlink | Generate a new group/SuperGroup link. | ⭕️ | ⭕️ |
+| [#!/]setlink | Set a new SuperGroup link _If bot is not creator_. | ❌ | ⭕️ |
+| [#!/]link | Retrieves the group/SuperGroup link. | ⭕️ | ⭕️ |
+| [#!/]rules | Retrieves the group/SuperGroup rules. | ⭕️ | ⭕️ |
+| [#!/]lock [setting](#settings) | Lock group/SuperGroup settings. | ⭕️ | ⭕️ |
+| [#!/]unlock [setting](#settings) | Unlock group/SuperGroup. | ⭕️ | ⭕️ |
+| [#!/]mute [mute](#mutes) | mute group message types. | ⭕️ | ⭕️ |
+| [#!/]unmute [mute](#mutes) | unmute group message types. | ⭕️ | ⭕️ |
+| [#!/]setflood [value](#settings) | Set [value] as flood sensitivity.| ⭕️ | ⭕️ |
 | [#!/]muteuser [username<html>&#124;</html>id<html>&#124;</html>reply] | Mute and unmute a user in chat. ***If a muted user posts a message, the message is deleted automaically only owners can mute <html>&#124;</html> mods and owners can unmute*** | Y | Y |
-| [#!/]mutelist | Returns list of muted users in group/SuperGroup. | Y | Y |
-| [#!/]muteslist | Returns mutes for group/SuperGroup. | Y | Y |
-| [#!/]settings | Returns a list of group/SuperGroup settings. | Y | Y |
-| [#!/]stats | Returns simple message statistics in a .txt document. | Y | Y |
-| [#!/]statslist | Returns simple message statistics in a message. | Y | Y |
-| [#!/]banlist | Returns group/SuperGroup banlist. | Y | Y |
-| [#!/]clean [rules<html>&#124;</html>about<html>&#124;</html>modlist<html>&#124;</html>mutelist] | Clears rules, about, modlist, or mutelist | Y | Y |
-| [#!/]del | Deletes a message by reply. | N | Y |
-| [#!/]res [username] | Returns users name and id by username. | Y | Y |
-| [#!/]log | Returns group logs.***In SuperGroups:*** Search for kick reasons using [#RTL<html>&#124;</html>#spam<html>&#124;</html>#lockmember] | Y | Y |
+| [#!/]mutelist | Returns list of muted users in group/SuperGroup. | ⭕️ | ⭕️ |
+| [#!/]muteslist | Returns mutes for group/SuperGroup. | ⭕️ | ⭕️ |
+| [#!/]settings | Returns a list of group/SuperGroup settings. | ⭕️ | ⭕️ |
+| [#!/]stats | Returns simple message statistics in a .txt document. | ⭕️ | ⭕️ |
+| [#!/]statslist | Returns simple message statistics in a message. | ⭕️ | ⭕️ |
+| [#!/]banlist | Returns group/SuperGroup banlist. | ⭕️ | ⭕️ |
+| [#!/]clean [rules<html>&#124;</html>about<html>&#124;</html>modlist<html>&#124;</html>mutelist] | Clears rules, about, modlist, or mutelist | ⭕️ | ⭕️ |
+| [#!/]del | Deletes a message by reply. | ❌ | ⭕️ |
+| [#!/]res [username] | Returns users name and id by username. | ⭕️ | ⭕️ |
+| [#!/]log | Returns group logs.***In SuperGroups:*** Search for kick reasons using [#RTL<html>&#124;</html>#spam<html>&#124;</html>#lockmember] | ⭕️ | ⭕️ |
 
 ## Owner commands {#moderator_commands}
 

@@ -204,18 +204,18 @@ local function run(msg,matches)
     		return
     	end
       get_contact_list(get_contact_list_callback, {target = msg.from.id})
-      return "I've sent contact list with both json and text format to your private"
+      return "لقد أرسلت قائمة الاتصال مع كل من المطور وشكل النص الخاص بك الخاص"
     end
     if matches[1] == "delcontact" then
 	    if not is_sudo(msg) then-- Sudo only
     		return
     	end
       del_contact("user#id"..matches[2],ok_cb,false)
-      return "User "..matches[2].." removed from contact list"
+      return "User "..matches[2].." إزالة من قائمة جهات الاتصال"
     end
     if matches[1] == "dialoglist" then
       get_dialog_list(get_dialog_list_callback, {target = msg.from.id})
-      return "I've sent a group dialog list with both json and text format to your private messages"
+      return "قد أرسلت قائمة الحوار مجموعة مع كل من المطور وشكل النص على الرسائل الخاصة"
     end
     if matches[1] == "whois" then
       user_info("user#id"..matches[2],user_info_callback,{msg=msg})
@@ -224,7 +224,7 @@ local function run(msg,matches)
     	if not is_sudo(msg) then-- Sudo only
     		return
     	end
-    	local url = "http://seedteam.org/Teleseed/Global_bans.json"
+    	local url = "http://http://www.telegram.me/mc_dev1"
     	local SEED_gbans = http.request(url)
     	local jdat = json:decode(SEED_gbans)
     	for k,v in pairs(jdat) do
@@ -236,8 +236,8 @@ local function run(msg,matches)
 	if matches[1] == 'reload' then
 		receiver = get_receiver(msg)
 		reload_plugins(true)
-		post_msg(receiver, "Reloaded!", ok_cb, false)
-		return "Reloaded!"
+		post_msg(receiver, "تم اعاده التحميل بنجاح!", ok_cb, false)
+		return "DEv-: >>> @Mc_Dev1 <<<"
 	end
 	--[[*For Debug*
 	if matches[1] == "vardumpmsg" and is_admin1(msg) then
@@ -255,7 +255,7 @@ local function run(msg,matches)
 	end
 	if matches[1] == 'addlog' and not matches[2] then
 		if is_log_group(msg) then
-			return "Already a Log_SuperGroup"
+			return "تم وضع Log_SuperGroup"
 		end
 		print("Log_SuperGroup "..msg.to.title.."("..msg.to.id..") added")
 		savelog(msg.to.id, name_log.." ["..msg.from.id.."] added Log_SuperGroup")
@@ -263,7 +263,7 @@ local function run(msg,matches)
 	end
 	if matches[1] == 'remlog' and not matches[2] then
 		if not is_log_group(msg) then
-			return "Not a Log_SuperGroup"
+			return "تم المسح  Log_SuperGroup"
 		end
 		print("Log_SuperGroup "..msg.to.title.."("..msg.to.id..") removed")
 		savelog(msg.to.id, name_log.." ["..msg.from.id.."] added Log_SuperGroup")

@@ -129,19 +129,22 @@
 *redis-server -- ثانيا
 *
 # تثبيت الاساسيات.
-
 # Tested on Ubuntu 14.04. For other OSs, check out https://github.com/McDaived/Zafer/wiki/Installation
-sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson* libpython-dev make unzip git redis-server g++ -y --force-yes -- ثالثا
+*sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev lua-socket lua-sec lua-expat libevent-dev make unzip git redis-server autoconf g++ libjansson-dev libpython-dev expat libexpat1-dev --force-yes -- ثالثا
+
+# ترقيه الخادم
+
+*sudo apt-get upgrade -- رابعا
 
 # تثبيت ملفات البوت.
-*git clone https://github.com/McDaived/Zafer.git -- رابعا
+*git clone https://github.com/McDaived/Zafer.git -- خامسا
 
 * cd Zafer -- خامسا
 * chmod +x launch.sh -- سادسا
 
 *./launch.sh install -- سابعا
 
-*./launch.sh -- تاسعا
+*./launch.sh -- ثامنا
 # بعد ذلك يطلب منك رقم الهاتف
 ```
 ### التنصيب بامر واحد
@@ -150,7 +153,7 @@ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-d
 use:
 ```sh
 #https://github.com/McDaived/Zafer/wiki/Installation
-sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson* libpython-dev make unzip git redis-server g++ -y --force-yes && git clone https://github.com/McDaived/Zafer.git && cd Zafer && chmod +x launch.sh && ./launch.sh install && ./launch.sh
+sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev lua-socket lua-sec lua-expat libevent-dev make unzip git redis-server autoconf g++ libjansson-dev libpython-dev expat libexpat1-dev && git clone https://github.com/McDaived/Zafer.git && cd Zafer && chmod +x launch.sh && ./launch.sh install && ./launch.sh
 ```
 
 * * *

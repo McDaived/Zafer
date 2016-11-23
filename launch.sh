@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 THIS_DIR=$(cd $(dirname $0); pwd)
 cd $THIS_DIR
 
@@ -32,7 +33,17 @@ install_luarocks() {
 }
 
 install_rocks() {
-  ./.luarocks/bin/luarocks install luasocket
+  ./.luarocks/bin/luarocks install luasec
+  RET=$?; if [ $RET -ne 0 ];
+    then echo "Error. Exiting."; exit $RET;
+  fi
+
+ ./.luarocks/bin/luarocks install lbase64 20120807-3
+ RET=$?; if [ $RET -ne 0 ];
+    then echo "Error. Exiting."; exit $RET;
+  fi
+  
+ ./.luarocks/bin/luarocks install luasocket
   RET=$?; if [ $RET -ne 0 ];
     then echo "Error. Exiting."; exit $RET;
   fi
@@ -57,21 +68,6 @@ install_rocks() {
     then echo "Error. Exiting."; exit $RET;
   fi
 
-  ./.luarocks/bin/luarocks install luafilesystem
-  RET=$?; if [ $RET -ne 0 ];
-    then echo "Error. Exiting."; exit $RET;
-  fi
-
-  ./.luarocks/bin/luarocks install lub
-  RET=$?; if [ $RET -ne 0 ];
-    then echo "Error. Exiting."; exit $RET;
-  fi
-
-  ./.luarocks/bin/luarocks install luaexpat
-  RET=$?; if [ $RET -ne 0 ];
-    then echo "Error. Exiting."; exit $RET;
-  fi  
-  
   ./.luarocks/bin/luarocks install xml
   RET=$?; if [ $RET -ne 0 ];
     then echo "Error. Exiting."; exit $RET;
@@ -81,23 +77,8 @@ install_rocks() {
   RET=$?; if [ $RET -ne 0 ];
     then echo "Error. Exiting."; exit $RET;
   fi
-  
+
   ./.luarocks/bin/luarocks install serpent
-  RET=$?; if [ $RET -ne 0 ];
-    then echo "Error. Exiting."; exit $RET;
-  fi
-  
-  ./.luarocks/bin/luarocks install lunitx
-  RET=$?; if [ $RET -ne 0 ];
-    then echo "Error. Exiting."; exit $RET;
-  fi
-  
-  ./.luarocks/bin/luarocks install set
-  RET=$?; if [ $RET -ne 0 ];
-    then echo "Error. Exiting."; exit $RET;
-  fi
-  
-  ./.luarocks/bin/luarocks install htmlparser
   RET=$?; if [ $RET -ne 0 ];
     then echo "Error. Exiting."; exit $RET;
   fi
@@ -106,15 +87,16 @@ install_rocks() {
 install() {
   git pull
   git submodule update --init --recursive
-  cd tg && ./configure && make
-  
-  RET=$?; if [ $RET -ne 0 ]; then
-    echo "Trying without Python...";
-    ./configure --disable-python && make
-    RET=$?
-  fi
-  
+  patch -i "patches/disable-python-and-libjansson.patch" -p 0 --batch --forward
+  RET=$?;
+
+  cd tg
   if [ $RET -ne 0 ]; then
+    autoconf -i
+  fi
+  ./configure && make
+
+  RET=$?; if [ $RET -ne 0 ]; then
     echo "Error. Exiting."; exit $RET;
   fi
   cd ..
@@ -132,8 +114,15 @@ else
     echo "Run $0 install"
     exit 1
   fi
+
+  if [ ! -f ./tg/bin/telegram-cli ]; then
+    echo "tg binary not found"
+    echo "Run $0 install"
+    exit 1
+  fi
+  fi
   
-   chmod 777 launch.sh
+  chmod 777 Mc_Dev1.lua
    
   if [ ! -f ./tg/bin/telegram-cli ]; then
     echo "tg binary not found"

@@ -22,7 +22,7 @@ local function chat_stats(chat_id)
         return a.msgs > b.msgs
       end
     end)
-  local text = 'احصائيات دردشة:\n'
+  local text = 'احصائيات دردشة📝:\n'
   for k,user in pairs(users_info) do
     text = text..user.name..' = '..user.msgs..'\n'
   end

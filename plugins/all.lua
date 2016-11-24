@@ -31,7 +31,7 @@ end
 
 local function get_group_type(target)
   local data = load_data(_config.moderation.data)
-  local group_type = data[tostring(target)]['نوع_المجموعة:']
+  local group_type = data[tostring(target)]['group_type']
     if not group_type or group_type == nil then
        return '📵لا نوع في المجموعة متاح  \ n استخدم /type لتحديد🔏 نوع المجموعه'
     end
@@ -40,7 +40,7 @@ end
 
 local function get_description(target)
   local data = load_data(_config.moderation.data)
-  local data_cat = 'وصف'
+  local data_cat = 'description'
   if not data[tostring(target)][data_cat] then
     return '📵لا يوجد وصف متاح.'
   end
@@ -50,7 +50,7 @@ end
 
 local function get_rules(target)
   local data = load_data(_config.moderation.data)
-  local data_cat = 'قوانين'
+  local data_cat = 'rules'
   if not data[tostring(target)][data_cat] then
     return '📵لا توجد قوانين📋 متاحه'
   end
@@ -61,7 +61,7 @@ end
 
 local function modlist(target)
   local data = load_data(_config.moderation.data)
-  local groups = 'المجموعات'
+  local groups = 'groups'
   if not data[tostring(groups)] or not data[tostring(groups)][tostring(target)] then
     return 'لا يتم إضافة مجموعة أو غير عالم.'
   end
@@ -70,7 +70,7 @@ local function modlist(target)
   end
   local i = 1
   local message = '\nقائمه المشرفين🗒 :\n'
-  for k,v in pairs(data[tostring(target)]['المشرفين']) do
+  for k,v in pairs(data[tostring(target)]['moderators']) do
     message = message ..i..' - @'..v..' [' ..k.. '] \n'
     i = i + 1
   end
@@ -90,10 +90,10 @@ local function all(msg,target,receiver)
   local text = "كل شيئ عن هذه المجموعه\n\n"
   local group_type = get_group_type(target)
   text = text.."نوع المجموعه: \n"..group_type
-  if group_type == "المجموعه" or group_type == "عام" then
+  if group_type == "Group" or group_type == "Realm" then
 	local settings = show_group_settingsmod(msg,target)
 	text = text.."\n\n"..settings
-  elseif group_type == "المجموعه سوبر" then
+  elseif group_type == "SuperGroup" then
 	local settings = show_supergroup_settingsmod(msg,target)
 	text = text..'\n\n'..settings
   end

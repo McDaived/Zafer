@@ -33,7 +33,7 @@ local function get_group_type(target)
   local data = load_data(_config.moderation.data)
   local group_type = data[tostring(target)]['نوع_المجموعة:']
     if not group_type or group_type == nil then
-       return 'لا نوع في المجموعة متاح  \ n استخدم /type لتحديد نوع المجموعه'
+       return '📵لا نوع في المجموعة متاح  \ n استخدم /type لتحديد🔏 نوع المجموعه'
     end
     return group_type
 end
@@ -42,7 +42,7 @@ local function get_description(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'وصف'
   if not data[tostring(target)][data_cat] then
-    return 'لا يوجد وصف متاح.'
+    return '📵لا يوجد وصف متاح.'
   end
   local about = data[tostring(target)][data_cat]
   return about
@@ -52,7 +52,7 @@ local function get_rules(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'قوانين'
   if not data[tostring(target)][data_cat] then
-    return 'لا توجد قوانين متاحه'
+    return '📵لا توجد قوانين📋 متاحه'
   end
   local rules = data[tostring(target)][data_cat]
   return rules
@@ -66,10 +66,10 @@ local function modlist(target)
     return 'لا يتم إضافة مجموعة أو غير عالم.'
   end
   if next(data[tostring(target)]['المشرفين']) == nil then
-    return 'لا يوجد مشرفين في هذه المجموعه'
+    return '🌐لا يوجد📵 مشرفين في هذه المجموعه'
   end
   local i = 1
-  local message = '\nقائمه المشرفين :\n'
+  local message = '\nقائمه المشرفين🗒 :\n'
   for k,v in pairs(data[tostring(target)]['المشرفين']) do
     message = message ..i..' - @'..v..' [' ..k.. '] \n'
     i = i + 1
@@ -81,9 +81,9 @@ local function get_link(target)
   local data = load_data(_config.moderation.data)
   local group_link = data[tostring(target)]['settings']['set_link']
   if not group_link or group_link == nil then 
-    return "لا يوجد رابط"
+    return "📵📌لا يوجد رابط"
   end
-  return "رابط المجموعه:\n"..group_link
+  return "📌رابط المجموعه:\n"..group_link
 end
 
 local function all(msg,target,receiver)
@@ -98,21 +98,21 @@ local function all(msg,target,receiver)
 	text = text..'\n\n'..settings
   end
   local rules = get_rules(target)
-  text = text.."\n\nقوانين: \n"..rules
+  text = text.."\n\nقوانين📋: \n"..rules
   local description = get_description(target)
-  text = text.."\n\nحول: \n"..description
+  text = text.."\n\nحول♻️: \n"..description
   local modlist = modlist(target)
-  text = text.."\n\nمشرفين: \n"..modlist
+  text = text.."\n\nمشرفين🗒: \n"..modlist
   local link = get_link(target)
-  text = text.."\n\nرابط: \n"..link
+  text = text.."\n\nرابط📌: \n"..link
   local stats = chat_stats(target)
-  text = text.."\n\nاحصائيات: \n"..stats
+  text = text.."\n\nاحصائيات📋: \n"..stats
   local mutes_list = mutes_list(target)
-  text = text.."\n\nثائمه الصامتين : \n"..mutes_list
+  text = text.."\n\nقائمه الصامتين🔇🔕: \n"..mutes_list
   local muted_user_list = muted_user_list(target)
-  text = text.."\n\nقائمة المستخدمين الصامتة: \n"..muted_user_list
+  text = text.."\n\nقائمة المستخدمين الصامتة🔇🔕: \n"..muted_user_list
   local ban_list = ban_list(target)
-  text = text.."\n\nقائمه الحظورين: \n"..ban_list
+  text = text.."\n\nقائمه الحظورين📖: \n"..ban_list
   local file = io.open("./groups/all/"..target.."all.txt", "w")
   file:write(text)
   file:flush()

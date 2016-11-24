@@ -22,7 +22,7 @@ local function chat_stats(chat_id)
         return a.msgs > b.msgs
       end
     end)
-  local text = 'Chat stats:\n'
+  local text = 'احصائيات دردشة:\n'
   for k,user in pairs(users_info) do
     text = text..user.name..' = '..user.msgs..'\n'
   end
@@ -31,18 +31,18 @@ end
 
 local function get_group_type(target)
   local data = load_data(_config.moderation.data)
-  local group_type = data[tostring(target)]['group_type']
+  local group_type = data[tostring(target)]['نوع_المجموعة:']
     if not group_type or group_type == nil then
-       return 'No group type available.\nUse /type in the group to set type.'
+       return 'لا نوع في المجموعة متاح  \ n استخدم /type لتحديد نوع المجموعه'
     end
     return group_type
 end
 
 local function get_description(target)
   local data = load_data(_config.moderation.data)
-  local data_cat = 'description'
+  local data_cat = 'وصف'
   if not data[tostring(target)][data_cat] then
-    return 'No description available.'
+    return 'لا يوجد وصف متاح.'
   end
   local about = data[tostring(target)][data_cat]
   return about
@@ -50,9 +50,9 @@ end
 
 local function get_rules(target)
   local data = load_data(_config.moderation.data)
-  local data_cat = 'rules'
+  local data_cat = 'قوانين'
   if not data[tostring(target)][data_cat] then
-    return 'No rules available.'
+    return 'لا توجد قوانين متاحه'
   end
   local rules = data[tostring(target)][data_cat]
   return rules
@@ -61,16 +61,16 @@ end
 
 local function modlist(target)
   local data = load_data(_config.moderation.data)
-  local groups = 'groups'
+  local groups = 'المجموعات'
   if not data[tostring(groups)] or not data[tostring(groups)][tostring(target)] then
-    return 'Group is not added or is Realm.'
+    return 'لا يتم إضافة مجموعة أو غير عالم.'
   end
-  if next(data[tostring(target)]['moderators']) == nil then
-    return 'No moderator in this group.'
+  if next(data[tostring(target)]['المشرفين']) == nil then
+    return 'لا يوجد مشرفين في هذه المجموعه'
   end
   local i = 1
-  local message = '\nList of moderators :\n'
-  for k,v in pairs(data[tostring(target)]['moderators']) do
+  local message = '\nقائمه المشرفين :\n'
+  for k,v in pairs(data[tostring(target)]['المشرفين']) do
     message = message ..i..' - @'..v..' [' ..k.. '] \n'
     i = i + 1
   end
@@ -81,38 +81,38 @@ local function get_link(target)
   local data = load_data(_config.moderation.data)
   local group_link = data[tostring(target)]['settings']['set_link']
   if not group_link or group_link == nil then 
-    return "No link"
+    return "لا يوجد رابط"
   end
-  return "Group link:\n"..group_link
+  return "رابط المجموعه:\n"..group_link
 end
 
 local function all(msg,target,receiver)
-  local text = "All the things I know about this group\n\n"
+  local text = "كل شيئ عن هذه المجموعه\n\n"
   local group_type = get_group_type(target)
-  text = text.."Group Type: \n"..group_type
-  if group_type == "Group" or group_type == "Realm" then
+  text = text.."نوع المجموعه: \n"..group_type
+  if group_type == "المجموعه" or group_type == "عام" then
 	local settings = show_group_settingsmod(msg,target)
 	text = text.."\n\n"..settings
-  elseif group_type == "SuperGroup" then
+  elseif group_type == "المجموعه سوبر" then
 	local settings = show_supergroup_settingsmod(msg,target)
 	text = text..'\n\n'..settings
   end
   local rules = get_rules(target)
-  text = text.."\n\nRules: \n"..rules
+  text = text.."\n\nقوانين: \n"..rules
   local description = get_description(target)
-  text = text.."\n\nAbout: \n"..description
+  text = text.."\n\nحول: \n"..description
   local modlist = modlist(target)
-  text = text.."\n\nMods: \n"..modlist
+  text = text.."\n\nمشرفين: \n"..modlist
   local link = get_link(target)
-  text = text.."\n\nLink: \n"..link
+  text = text.."\n\nرابط: \n"..link
   local stats = chat_stats(target)
-  text = text.."\n\n"..stats
+  text = text.."\n\nاحصائيات: \n"..stats
   local mutes_list = mutes_list(target)
-  text = text.."\n\n"..mutes_list
+  text = text.."\n\nثائمه الصامتين : \n"..mutes_list
   local muted_user_list = muted_user_list(target)
-  text = text.."\n\n"..muted_user_list
+  text = text.."\n\nقائمة المستخدمين الصامتة: \n"..muted_user_list
   local ban_list = ban_list(target)
-  text = text.."\n\n"..ban_list
+  text = text.."\n\nقائمه الحظورين: \n"..ban_list
   local file = io.open("./groups/all/"..target.."all.txt", "w")
   file:write(text)
   file:flush()
@@ -122,7 +122,7 @@ local function all(msg,target,receiver)
 end
 
 local function run(msg, matches)
-  if matches[1] == "العمل" and matches[2] and is_owner2(msg.from.id, matches[2]) then
+  if matches[1] == "itwork" and matches[2] and is_owner2(msg.from.id, matches[2]) then
     local receiver = get_receiver(msg)
     local target = matches[2]
     return all(msg,target,receiver)
@@ -130,7 +130,7 @@ local function run(msg, matches)
   if not is_owner(msg) then
     return
   end
-  if matches[1] == "العمل" and not matches[2] then
+  if matches[1] == "itwork" and not matches[2] then
     local receiver = get_receiver(msg)
     return all(msg,msg.to.id,receiver)
   end
@@ -139,8 +139,8 @@ end
 
 return {
   patterns = {
-  "^/(العمل)$",
-  "^/(العمل) (%d+)$"
+  "^/(itwork)$",
+  "^/(itwork) (%d+)$"
   },
   run = run
 }

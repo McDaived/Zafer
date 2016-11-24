@@ -65,7 +65,7 @@ local function modlist(target)
   if not data[tostring(groups)] or not data[tostring(groups)][tostring(target)] then
     return 'لا يتم إضافة مجموعة أو غير عالم.'
   end
-  if next(data[tostring(target)]['المشرفين']) == nil then
+  if next(data[tostring(target)]['moderators']) == nil then
     return '🌐لا يوجد📵 مشرفين في هذه المجموعه'
   end
   local i = 1

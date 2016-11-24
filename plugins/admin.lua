@@ -25,7 +25,7 @@ local function logadd(msg)
 	end
 	data[tostring(GBan_log)][tostring(msg.to.id)] = msg.to.peer_id
 	save_data(_config.moderation.data, data)
-	local text = 'Log_SuperGroup has has been set!'
+	local text = 'Log_SuperGroup تم وضع'
 	reply_msg(msg.id,text,ok_cb,false)
 	return
 end
@@ -41,7 +41,7 @@ local function logrem(msg)
 	end
 	data[tostring(GBan_log)][tostring(msg.to.id)] = nil
 	save_data(_config.moderation.data, data)
-	local text = 'Log_SuperGroup has has been removed!'
+	local text = 'Log_SuperGroup تم ازاله'
 	reply_msg(msg.id,text,ok_cb,false)
 	return
 end
@@ -167,16 +167,16 @@ local function run(msg,matches)
     end
     if matches[1] == "setbotphoto" then
     	redis:set("bot:photo", "waiting")
-    	return 'Please send me bot photo now'
+    	return 'ارجوك قم بارسال الصوره🗼 لتوضع للبوت📌'
     end
-    if matches[1] == "markread" then
+    if matches[1] == "rec" then
     	if matches[2] == "on" then
     		redis:set("bot:markread", "on")
-    		return "Mark read > on"
+    		return "التسجيل يتم > on"
     	end
     	if matches[2] == "off" then
     		redis:del("bot:markread")
-    		return "Mark read > off"
+    		return "التسجيل يتم > off"
     	end
     	return
     end
@@ -255,7 +255,7 @@ local function run(msg,matches)
 	end
 	if matches[1] == 'addlog' and not matches[2] then
 		if is_log_group(msg) then
-			return "تم وضع Log_SuperGroup"
+			return "تم وضع📲 Log_SuperGroup📥"
 		end
 		print("Log_SuperGroup "..msg.to.title.."("..msg.to.id..") added")
 		savelog(msg.to.id, name_log.." ["..msg.from.id.."] added Log_SuperGroup")
@@ -263,7 +263,7 @@ local function run(msg,matches)
 	end
 	if matches[1] == 'remlog' and not matches[2] then
 		if not is_log_group(msg) then
-			return "تم المسح  Log_SuperGroup"
+			return "🗑تم المسح🕳  Log_SuperGroup"
 		end
 		print("Log_SuperGroup "..msg.to.title.."("..msg.to.id..") removed")
 		savelog(msg.to.id, name_log.." ["..msg.from.id.."] added Log_SuperGroup")
@@ -285,8 +285,8 @@ return {
 	"^[#!/](import) (.*)$",
 	"^[#!/](pmunblock) (%d+)$",
 	"^[#!/](pmblock) (%d+)$",
-	"^[#!/](markread) (on)$",
-	"^[#!/](markread) (off)$",
+	"^[#!/](rec) (on)$",
+	"^[#!/](rec) (off)$",
 	"^[#!/](setbotphoto)$",
 	"^[#!/](contactlist)$",
 	"^[#!/](dialoglist)$",

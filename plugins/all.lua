@@ -31,9 +31,9 @@ end
 
 local function get_group_type(target)
   local data = load_data(_config.moderation.data)
-  local group_type = data[tostring(target)]['group_type']
+  local group_type = data[tostring(target)]['group_type:']
     if not group_type or group_type == nil then
-       return '📵لا نوع في المجموعة متاح  \ n استخدم /type لتحديد🔏 نوع المجموعه'
+       return 'لا يوجد نوع في المجموعه لتحديد النوع اكتب /type'
     end
     return group_type
 end

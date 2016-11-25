@@ -122,10 +122,10 @@ local function kick_ban_res(extra, success, result)
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'العضو👤 '..user_id..' 🔓راح الحضر منة✔️'
-      elseif get_cmd == 'banl' then
+      elseif get_cmd == 'gban' then
         send_large_msg(receiver, 'العضو👤 @'..member..' ['..member_id..'] 🔒تم حظره كليا✔️')
 		banall_user(member_id)
-      elseif get_cmd == 'unbanl' then
+      elseif get_cmd == 'ungban' then
         send_large_msg(receiver, 'العضو👤 @'..member..' ['..member_id..'] 🔓راح الحظر الكلي منه✔️')
 	    unbanall_user(member_id)
     end
@@ -275,7 +275,7 @@ end
 		return
 	end
 
-  if matches[1]:lower() == 'banl' and is_admin1(msg) then -- Global ban
+  if matches[1]:lower() == 'gban' and is_admin1(msg) then -- Global ban
     if type(msg.reply_id) ~="nil" and is_admin1(msg) then
       banall = get_message(msg.reply_id,banall_by_reply, false)
     end
@@ -291,7 +291,7 @@ end
      else
 	local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'banl',
+		get_cmd = 'gban',
 		from_id = msg.from.id,
 		chat_type = msg.to.type
 	}
@@ -299,7 +299,7 @@ end
 		resolve_username(username, kick_ban_res, cbres_extra)
       end
   end
-  if matches[1]:lower() == 'unbanl' then -- Global unban
+  if matches[1]:lower() == 'ungban' then -- Global unban
     local user_id = matches[2]
     local chat_id = msg.to.id
       if string.match(matches[2], '^%d+$') then
@@ -311,7 +311,7 @@ end
     else
 		local cbres_extra = {
 			chat_id = msg.to.id,
-			get_cmd = 'unbanl',
+			get_cmd = 'ungban',
 			from_id = msg.from.id,
 			chat_type = msg.to.type
 		}
@@ -319,25 +319,25 @@ end
 		resolve_username(username, kick_ban_res, cbres_extra)
       end
   end
-  if matches[1]:lower() == "banllist" then -- Global ban list
+  if matches[1]:lower() == "gbanlist" then -- Global ban list
     return banall_list()
   end
 end
 
 return {
   patterns = {
-    "^[#!/](banl) (.*)$",
-    "^[#!/](banl)$",
+    "^[#!/](gban) (.*)$",
+    "^[#!/](gban)$",
     "^[#!/](banlist) (.*)$",
     "^[#!/](banlist)$",
-    "^[#!/](banllist)$",
+    "^[#!/](gbanlist)$",
     "^[#!/](kickme)",
     "^[#!/](kick)$",
     "^[#!/](ban)$",
     "^[#!/](ban) (.*)$",
     "^[#!/](unban) (.*)$",
-    "^[#!/](unbanl) (.*)$",
-    "^[#!/](unbanl)$",
+    "^[#!/](ungban) (.*)$",
+    "^[#!/](ungban)$",
     "^[#!/](kick) (.*)$",
     "^[#!/](unban)$",
     "^[#!/](id)$",

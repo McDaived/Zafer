@@ -2,7 +2,7 @@ do
 
 local function run(msg, matches)
 local reply_id = msg['id']
-if is_momod(msg) and matches[1]== 'اوامر' then
+if is_momod(msg) and matches[1]== 'help' then
 local S = [[  
 : 
 💢♨️ SＵPＥＲ ＺAFＥＲΞ B⊙Ț♨️💢

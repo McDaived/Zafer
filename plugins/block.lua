@@ -100,7 +100,7 @@ return {
   "^([!/#])(block) (.*)$", 
    "^([!/#])(unblock) (.*)$", 
     "^([!/#])(blocklist)$", 
-    "^([!/#])(dell) blocks$", 
+    "^([!/#])(dell) blocklist$", 
 "^(.+)$", 
   }, 
   run = run 

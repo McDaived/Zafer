@@ -62,11 +62,12 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
    else
    Username = '----'
  end
-   local text = '♦️الاسم الاول : '..(msg.from.first_name or '----')..'\n'.   local text = text..'♦️الاسم الاخير : '..(msg.from.last_name or '----')..'\n'   
-                 local text = text..'♦️المعرف : '..Username..'\n'
-                local text = text..'♦️ايدي : '..msg.from.id..'\n'
-                  local text = text..'♦️اسم المجموعه : '..msg.to.title..'\n'
-            local text = text..'♦️ايدي المجموعه : '..msg.to.id..'\n'
+   local text = '♦️الاسم الاول : '..(msg.from.first_name or '----')..'\n'.
+   local text = text..'♦️الاسم الاخير : '..(msg.from.last_name or '----')..'\n'   
+   local text = text..'♦️المعرف : '..Username..'\n'
+   local text = text..'♦️ايدي : '..msg.from.id..'\n'
+   local text = text..'♦️اسم المجموعه : '..msg.to.title..'\n'
+   local text = text..'♦️ايدي المجموعه : '..msg.to.id..'\n'
   local hash = 'rank:'..extra.chat2..':variables'
   local value = redis:hget(hash, result.id)
   if not value then
@@ -101,9 +102,10 @@ local function action_by_reply(extra, success, result)-- (reply) /rank  function
            else
            Username = '----'
          end
-   local text = '♦️الاسم الاول : '..(msg.from.first_name or '----')..'\n'    local text = text..'♦️الاسم الاخير : '..(msg.from.last_name or '----')..'\n'  
-              local text = text..'♦️المعرف : '..Username..'\n'
-                  local text = text..'♦️ايدي : '..msg.from.id..'\n'
+   local text = '♦️الاسم الاول : '..(msg.from.first_name or '----')..'\n'
+   local text = text..'♦️الاسم الاخير : '..(msg.from.last_name or '----')..'\n'  
+   local text = text..'♦️المعرف : '..Username..'\n'
+   local text = text..'♦️ايدي : '..msg.from.id..'\n'
     local hash = 'rank:'..result.to.id..':variables'
         local value = redis:hget(hash, result.from.id)
          if not value then

@@ -96,7 +96,8 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
   send_msg(extra.receiver, 'id not found.\nuse : /info @username', ok_cb, false)
   end
 end
-local function action_by_reply(extra, success, result)-- (reply) /rank  function
+
+local function action_by_reply(extra, success, result)-- (reply) /info  function
         if result.from.username then
            Username = '@'..result.from.username
            else
@@ -109,7 +110,7 @@ local function action_by_reply(extra, success, result)-- (reply) /rank  function
     local hash = 'rank:'..result.to.id..':variables'
         local value = redis:hget(hash, result.from.id)
          if not value then
-     if result.id == tonumber(Arian) then
+            if result.from.id == tonumber(Arian) then
        text = text..'♦️الرتبه : Executive Admin \n\n'
       elseif is_sudo(result.id) then
        text = text..' 🛠الرتبه : المطور🌟 \n\n'
@@ -132,10 +133,12 @@ local function action_by_reply(extra, success, result)-- (reply) /rank  function
   text = text..'♦️مـطـور البوت\n >>>>>Devloper-: @mc_dev1'
   send_msg(extra.receiver, text, ok_cb, true)
 end
+
 local function action_by_reply2(extra, success, result)
 local value = extra.value
 setrank(result, result.from.id, value)
 end
+
 local function run(msg, matches)
  if matches[1]:lower() == 'setrank' then
   local hash = 'usecommands:'..msg.from.id..':'..msg.to.id
@@ -152,6 +155,7 @@ local function run(msg, matches)
   local name = string.sub(matches[2], 1, 50)
   local value = string.sub(matches[3], 1, 1000)
   local text = setrank(msg, name, value)
+
   return text
   end
   end
@@ -176,19 +180,19 @@ local function run(msg, matches)
     if hash then
       local value = redis:hget(hash, msg.from.id)
       if not value then
-      if result.id == tonumber(Arian) then
-        text = text..'♦️الرتبه : Executive Admin \n\n'
-       elseif is_sudo(result.id) then
-        text = text..' 🛠الرتبه : المطور🌟 \n\n'
-       elseif is_owner(result.id, extra.chat2) then
-        text = text..' 👤الرتبه : مدير🔷 \n\n'
-       elseif is_momod(result.id, extra.chat2) then
-        text = text..' 👤الرتبه : ادمن🔶 \n\n'
-       else
-        text = text..' Ⓜ️الرتبه : عضو عادي🔻 \n\n'
-       end
-   else
-     text = text..'♦️رتبتك : '..value..'\n\n'
+        if msg.from.id == tonumber(Arian) then
+         text = text..'♦️الرتبه : Executive Admin \n\n'
+        elseif is_sudo(msg) then
+         text = text..'🛠الرتبه : المطور🌟 \n\n'
+        elseif is_owner(msg) then
+         text = text..'👤الرتبه : مدير🔷 \n\n'
+        elseif is_momod(msg) then
+         text = text..'👤الرتبه : ادمن🔶 \n\n'
+        else
+         text = text..'Ⓜ️الرتبه : عضو عادي🔻 \n\n'
+        end
+      else
+       text = text..'♦️رتبتك : '..value..'\n'
       end
     end
      local uhash = 'user:'..msg.from.id

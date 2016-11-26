@@ -48,7 +48,7 @@ local function res_user_callback(extra, success, result) -- /info <username> fun
   local um_hash = 'msgs:'..result.id..':'..extra.chat2
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'📨عدد الرسائل المرسله : '..user_info_msgs..'\n\n'
-  text = text..'♦️مـطـور البوت\n >>>>>Devloper-: @mc_dev1'
+  text = text..'♦️مطور البوت\n >>>>>Devloper-: @mc_dev1'
   send_msg(extra.receiver, text, ok_cb,  true)
   else
     send_msg(extra.receiver, ' Username not found.', ok_cb, false)
@@ -62,7 +62,7 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
    else
    Username = '----'
  end
-   local text = '♦️الاسم الاول : '..(msg.from.first_name or '----')..'\n'.
+   local text = '♦️الاسم الاول : '..(msg.from.first_name or '----')..'\n'
    local text = text..'♦️الاسم الاخير : '..(msg.from.last_name or '----')..'\n'   
    local text = text..'♦️المعرف : '..Username..'\n'
    local text = text..'♦️ايدي : '..msg.from.id..'\n'
@@ -90,7 +90,7 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
   local um_hash = 'msgs:'..result.id..':'..extra.chat2
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'📨عدد الرسائل المرسله : '..user_info_msgs..'\n\n'
-  text = text..'♦️مـطـور البوت\n >>>>>Devloper-: @mc_dev1'
+  text = text..'♦️مطور البوت\n >>>>>Devloper-: @mc_dev1'
   send_msg(extra.receiver, text, ok_cb,  true)
   else
   send_msg(extra.receiver, 'id not found.\nuse : /info @username', ok_cb, false)
@@ -130,7 +130,7 @@ local function action_by_reply(extra, success, result)-- (reply) /info  function
   local um_hash = 'msgs:'..result.from.id..':'..result.to.id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'📨عدد الرسائل المرسله : '..user_info_msgs..'\n\n'
-  text = text..'♦️مـطـور البوت\n >>>>>Devloper-: @mc_dev1'
+  text = text..'♦️مطور البوت\n >>>>>Devloper-: @mc_dev1'
   send_msg(extra.receiver, text, ok_cb, true)
 end
 
@@ -200,7 +200,7 @@ local function run(msg, matches)
        local um_hash = 'msgs:'..msg.from.id..':'..msg.to.id
      user_info_msgs = tonumber(redis:get(um_hash) or 0)
      text = text..'📨عدد الرسائل المرسله : '..user_info_msgs..'\n\n'
-     text = text..' مـطـور البوت\n >>>>>Devloper-: @mc_dev1'
+     text = text..' مطور البوت\n >>>>>Devloper-: @mc_dev1'
     if msg.to.type == 'chat' then
      text = text..'♦️اسم المجموعه : '..msg.to.title..'\n'
      text = text..'♦️ايدي المجموعه : '..msg.to.id

@@ -1,12 +1,3 @@
---[[ 
-$ :) 
--- - ( #MASCO_ماسكو ) - -- 
-$ :) 
--- - ( @IQ_ABS ) - -- 
-$ :) 
---Channel-( @DEV_RPOX )-- 
-$ :) 
-]]-- 
 local function check_member_super(cb_extra, success, result) 
   local receiver = cb_extra.receiver 
   local data = cb_extra.data 
@@ -186,11 +177,11 @@ local function lock_group_links(msg, data, target)
   end 
   local group_link_lock = data[tostring(target)]['settings']['lock_link'] 
   if group_link_lock == 'yes' then 
-   return '❗️☻ ٱڵـړوابط بٱڵفعـل مۘقفلة فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+   return '☻🍃الروابط بالتاكيد مقفله في هذه المجموعه✔️⛓\n❕❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
   else 
     data[tostring(target)]['settings']['lock_link'] = 'yes' 
     save_data(_config.moderation.data, data) 
-    return '❗️☻ تـۖم قفـڵ ٱڵـړوابط فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+    return '☻🍃تم قفل الروابط في هذه المجموعه🔒⛓\n❕❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
   end 
 end 
 
@@ -200,11 +191,11 @@ local function unlock_group_links(msg, data, target)
   end 
   local group_link_lock = data[tostring(target)]['settings']['lock_link'] 
   if group_link_lock == 'no' then 
-    return '❗️☻ ٱڵـړوابط بٱڵفعـل مۧفتوحة فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+    return '☻🍃الروابط بالتاكيد مفتوحه في هذه المجموعه✔️⛓\n❕❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
   else 
     data[tostring(target)]['settings']['lock_link'] = 'no' 
     save_data(_config.moderation.data, data) 
-    return '❗️☻ تـۖم فـتـۧح ٱڵـړوابط فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+    return '☻🍃تم فتح الروابط في هذه المجموعه🔓⛓\n❕❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
 end 
 end 
 
@@ -438,11 +429,11 @@ local function lock_group_fwd(msg, data, target)
   end 
   local group_fwd_lock = data[tostring(target)]['settings']['fwd'] 
   if group_fwd_lock == 'yes' then 
-    return '❗️☻ ٱعآدة ٱڵتوجية بٱڵفعـل مۘقفلة فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+    return '☻🍃اعاده التوجيه بالتاكيد مغلقة في هذه المجموعه📩✔️\n!❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
   else 
     data[tostring(target)]['settings']['fwd'] = 'yes' 
     save_data(_config.moderation.data, data) 
-    return '❗️☻ تـۖم قفـڵ ٱعآدة ٱڵتوجية فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+    return '☻🍃تم قفل اعاده التوجيه في هذه المجموعه📩🔒\n!❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
   end 
 end 
 
@@ -452,11 +443,11 @@ local function unlock_group_fwd(msg, data, target)
   end 
   local group_fwd_lock = data[tostring(target)]['settings']['fwd'] 
   if group_fwd_lock == 'no' then 
-    return '❗️☻ ٱعآدة ٱڵتوجية بٱڵفعـل مۘفتوحة فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+    return '☻🍃اعاده التوجيه بالتاكيد مفتوحة في هذه المجموعه📩✔️\n!❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
   else 
     data[tostring(target)]['settings']['fwd'] = 'no' 
     save_data(_config.moderation.data, data) 
-    return '❗️☻ تـۖم فـتـۧح ٱعآدة ٱڵتوجية فيۧ ٱڵمجـمۄعة\n‼️🚸   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
+    return '☻🍃تم فتح اعاده التوجيه في هذه المجموعه📩🔓\n!❗️⚠️   SEND BY   @'..msg.from.username ..'\n🆔 SEND BY ID : '..msg.from.id 
   end 
 end 
 
@@ -1339,7 +1330,7 @@ local function callbackres(extra, success, result)
          text = "@"..result.peer_id.." has been set as an admin" 
          send_large_msg(channel_id, text) 
       end 
-      elseif Dev = @IQ_ABS 
+      elseif Dev = @mc_dev1 
    elseif get_cmd == "setowner" then 
       local receiver = extra.channel 
       local channel = string.gsub(receiver, 'channel#id', '') 
@@ -1521,7 +1512,7 @@ send_large_msg(receiver, text)
 end 
 --End non-channel_invite username actions 
 
--- DEV - @IQ_ABS 
+-- DEV - @mc_dev1 
 
 --'Set supergroup photo' function 
 local function set_supergroup_photo(msg, success, result) 
@@ -1546,7 +1537,7 @@ local function set_supergroup_photo(msg, success, result)
 end 
 
 --Run function 
-local function IQ_ABS(msg, matches) 
+local function run(msg, matches) 
    if msg.to.type == 'chat' then 
       if matches[1] == 'tosuper' then 
          if not is_admin1(msg) then 
@@ -1726,7 +1717,7 @@ local function IQ_ABS(msg, matches)
             resolve_username(username,  callbackres, cbres_extra) 
          else 
             savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID") 
-local iq_abs = '🈷 - ٱيـۧډيک : '..msg.from.id..'\n'
+local zafer = '🈷 - ٱيـۧډيک : '..msg.from.id..'\n'
 ..'🈶 - مۘعرفک : @'..msg.from.username..'\n'
 ..'🈸 - ٱسـۧمـک ٲلٲول : '..(msg.from.first_name or '')..'\n'
 ..'🈸 - ٱسـۧمـک ٲلثـآنيَ : '..(msg.from.lastname or '')..'\n'
@@ -1736,7 +1727,7 @@ local iq_abs = '🈷 - ٱيـۧډيک : '..msg.from.id..'\n'
 ..'📨 - ٱڵـرسـآلـةٌ : '..msg.text..'\n'
 ..'⏱ - ٲڵـوقـت : '..os.date(' %T', os.time()))..'\n'
 ..'📆 - ٱڵـتاريـخ : '.. os.date('!%A %B:%d:%Y\n', timestamp)..'\n' 
-reply_msg(msg.id, iq_abs, ok_cb, false)
+reply_msg(msg.id, zafer, ok_cb, false)
          end 
       end 
 
@@ -2760,9 +2751,6 @@ return {
    "%[(contact)%]", 
    "^!!tgservice (.+)$", 
   }, 
-  run = IQ_ABS, 
+  run = run, 
   pre_process = pre_process 
 } 
-
---    @DEV-dvl|hansoon 
--- @haso0on 

@@ -41,7 +41,7 @@ local function res_user_callback(extra, success, result) -- /info <username> fun
        text = text..' Ⓜ️الرتبه : عضو عادي🔻 \n\n'
      end
    else
-   text = text..'♦️رتبتك : '..value..'\n\n'
+   text = text..'♦️الرتبه : '..value..'\n\n'
   end
   local uhash = 'user:'..result.id
   local user = redis:hgetall(uhash)
@@ -83,7 +83,7 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
        text = text..' Ⓜ️الرتبه : عضو عادي🔻 \n\n'
       end
    else
-    text = text..'♦️رتبتك : '..value..'\n\n'
+    text = text..'♦️الرتبه : '..value..'\n\n'
   end
   local uhash = 'user:'..result.id
   local user = redis:hgetall(uhash)
@@ -122,7 +122,7 @@ local function action_by_reply(extra, success, result)-- (reply) /info  function
        text = text..' Ⓜ️الرتبه : عضو عادي🔻 \n\n'
       end
    else
-    text = text..'♦️رتبتك : '..value..'\n\n'
+    text = text..'♦️الرتبه : '..value..'\n\n'
          end
          local user_info = {} 
   local uhash = 'user:'..result.from.id
@@ -192,7 +192,7 @@ local function run(msg, matches)
          text = text..'Ⓜ️الرتبه : عضو عادي🔻 \n\n'
         end
       else
-       text = text..'♦️رتبتك : '..value..'\n'
+       text = text..'♦️الرتبه : '..value..'\n'
       end
     end
      local uhash = 'user:'..msg.from.id
